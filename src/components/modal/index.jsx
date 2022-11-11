@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { ModalCard } from "./styles";
+import { ModalCard, ButtonOpenModal } from "./styles";
 import { addFavorite, removeFavorite } from "../../services/favorites";
 
 export function ModalCards({ item, isFavorite }) {
@@ -19,9 +19,7 @@ export function ModalCards({ item, isFavorite }) {
   let thumbnail = item.imageLinks && item.imageLinks.thumbnail;
   return (
     <ModalCard>
-      <Button color="danger" onClick={toggle}>
-        Click Me
-      </Button>
+      <ButtonOpenModal onClick={toggle}>Detalhes</ButtonOpenModal>
       <Modal
         isOpen={modal}
         toggle={toggle}
@@ -34,8 +32,7 @@ export function ModalCards({ item, isFavorite }) {
         <ModalFooter>
           {isFavorite ? (
             <Button
-              color="warning"
-              style={{}}
+              style={{ backgroundColor: "#FF473C" }}
               onClick={() => {
                 handleRemoveFavoriteBook(item);
               }}
@@ -44,8 +41,7 @@ export function ModalCards({ item, isFavorite }) {
             </Button>
           ) : (
             <Button
-              color="success"
-              style={{}}
+              style={{ backgroundColor: "#FF823C" }}
               onClick={() => {
                 handleAddFavoriteBook(item);
               }}
@@ -53,11 +49,12 @@ export function ModalCards({ item, isFavorite }) {
               Favoritar
             </Button>
           )}
-          <Button color="primary" target="_blank" href={item.previewLink}>
-            Do Something
-          </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
-            Cancel
+          <Button
+            style={{ backgroundColor: "#56C200" }}
+            target="_blank"
+            href={item.previewLink}
+          >
+            Mais Informações
           </Button>
         </ModalFooter>
       </Modal>

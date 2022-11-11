@@ -1,6 +1,12 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
-import { HomeContainer } from "./styles";
+import {
+  HomeContainer,
+  Row,
+  BooksContainer,
+  NavigateButton,
+  HeaderDiv,
+} from "./styles";
 import { Card } from "../../components/card";
 import { NoCard } from "../../components/noCard";
 import { useNavigate } from "react-router-dom";
@@ -62,11 +68,12 @@ export function Home() {
   return (
     <div>
       <HomeContainer>
-        <div>
-          <button onClick={navigateToFavorites}>Acesse sua Estante</button>
-        </div>
-        <header>BookFind</header>
-
+        <HeaderDiv>
+          <h1>Book Finder</h1>
+          <NavigateButton onClick={navigateToFavorites}>
+            Acesse sua Estante
+          </NavigateButton>
+        </HeaderDiv>
         <input
           type="text"
           placeholder="Digite um nome de um livro ou autor"
@@ -74,22 +81,28 @@ export function Home() {
           onKeyPress={searchBook}
         />
       </HomeContainer>
-
-      {bookData.length ? (
-        bookData.map((book, i) => {
-          return <Card key={i} item={book.volumeInfo} />;
-        })
-      ) : (
-        <NoCard />
-      )}
+      <Row></Row>
+      <BooksContainer>
+        {bookData.length ? (
+          bookData.map((book, i) => {
+            return <Card key={i} item={book.volumeInfo} />;
+          })
+        ) : (
+          <NoCard />
+        )}
+      </BooksContainer>
       {loading ? (
         <div
-          style={{ height: "200px", display: "flex", justifyContent: "center" }}
+          style={{ height: "100px", display: "flex", justifyContent: "center" }}
         >
           <h1>Loading</h1>
         </div>
       ) : null}
-      <div ref={schrollObserve} id={"schrollObserve"}></div>
+      <div
+        style={{ height: "100px" }}
+        ref={schrollObserve}
+        id={"schrollObserve"}
+      ></div>
     </div>
   );
 }

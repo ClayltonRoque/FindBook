@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const NoTask = styled.div`
-  border-top: 0.0625rem solid ${(props) => props.theme["gray-400"]};
-  margin-top: 0.9375rem;
-  padding: 0.9375rem 0.125rem 0.125rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -14,8 +12,8 @@ export const NoTask = styled.div`
     color: ${(props) => props.theme["gray-100"]};
   }
 
-  .imgFace {
+  img {
     margin-left: 5px;
-    width: 20px;
+    width: 30rem;
   }
 `;
